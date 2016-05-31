@@ -1,0 +1,48 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"username": "fysheets",
+			"firstName": "Farhanah",
+			"lastName": "Sheets",
+			"favorite": "Pride & Prejudice",
+			"hometown": "Beaver Falls",
+			"birthday": 593072740000,
+			"bookClub": true,
+			"image": "static/images/BPLbooks.jpg",
+			"books": [
+				{
+					"id": 1
+				},
+				{
+					"id": 4
+				},
+				{
+					"id": 5
+				}
+			]
+		},
+		{
+			"id": 2,
+			"username": "tester123",
+			"firstName": "John",
+			"lastName": "Smith",
+			"favorite": "The Great Gatsby",
+			"hometown": "Newton",
+			"birthday": 576134917000,
+			"bookClub": false,
+			"image": "static/images/legoman.png",
+			"books": [
+				{
+					"id": 2
+				},
+				{
+					"id": 3
+				},
+				{
+					"id": 5
+				}
+			]
+		}
+	]
+}
