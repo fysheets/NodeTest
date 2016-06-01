@@ -17,6 +17,58 @@ router.get('/testUsers', function(req, res) {
     });
 });
 
+/* GET New User page. */
+router.get('/newUser', function(req, res) {
+    res.render('newUser', { title: 'Add New User' });
+});
+
+/* POST to Add User Service */
+router.post('/adduser', function(req, res) {
+    // Set our internal DB variable
+    var db = req.db;
+
+    // Get our form values. These rely on the "name" attributes
+    var userName = req.body.username;
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var hometown = req.body.hometown;
+    var favorite = req.body.favorite;
+    var image = req.body.image;
+    var birthday = new Date(req.body.birthday).getTime();
+    var bookClub = req.body.bookClub;
+    // adjust bookClub to bool
+    if (bookClub == "Yes") {
+    	bookClub = true;
+    } else {
+    	bookClub = false;
+    }
+
+    // Set our collection
+    var collection = db.get('usercollection');
+
+    // Submit to the DB
+    collection.insert({
+        "username" : userName,
+        "firstName" : firstName,
+        "lastName" : lastName,
+        "hometown" : hometown,
+        "favorite" : favorite,
+        "image" : image,
+        "birthday" : birthday,
+        "bookClub" : bookClub,
+        "books" : []
+    }, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            // And forward to success page
+            res.redirect("http://mylibrary.test.com:8000/MyLibrary/#/readers");
+        }
+    });
+});
+
 /* GET users from mongo */
 router.get('/testBooks', function(req, res) {
     var db = req.db;
@@ -27,5 +79,7 @@ router.get('/testBooks', function(req, res) {
         });
     });
 });
+
+
 
 module.exports = router;

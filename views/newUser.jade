@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1= title
+    form#formAddUser(name="adduser",method="post",action="/adduser")
+        input#inputUserName(type="text", placeholder="Username", name="username")
+        br
+        input#inputFirstName(type="text", placeholder="First Name", name="firstName")
+        br
+        input#inputLastName(type="text", placeholder="Last Name", name="lastName")
+        br
+        input#inputHometown(type="text", placeholder="Hometown", name="hometown", size=30)
+        br
+        input#inputFavorite(type="text", placeholder="Favorite Book", name="favorite", size = 50)
+        br
+        input#inputImage(type="text", placeholder="Image URL", name="image", size=50)
+        br
+        input#inputBirthday(type="text", placeholder="Birthday MM/DD/YYYY", name="birthday")
+        br
+        label Are you in a Book Club?     
+        label Yes
+        input#inputBookClub(type="radio", value="Yes", name="bookClub")
+        label No
+        input#inputBookClub(type="radio", value="No", name="bookClub" checked)
+        br
+        button#btnSubmit(type="submit") Join Library
