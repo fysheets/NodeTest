@@ -17,4 +17,15 @@ router.get('/testUsers', function(req, res) {
     });
 });
 
+/* GET users from mongo */
+router.get('/testBooks', function(req, res) {
+    var db = req.db;
+    var collection = db.get('bookcollection');
+    collection.find({},{},function(e,docs){
+        res.render('testBooks', {
+            "testBooks" : docs
+        });
+    });
+});
+
 module.exports = router;
