@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    h1= title
+    form#formAddUser(name="addbook",method="post",action="/addbook")
+        input#inputID(type="text", placeholder="Book ID", name="id")
+        br
+        input#inputTitle(type="text", placeholder="Title", name="title", size = 50)
+        br
+        input#inputAuthor(type="text", placeholder="Author", name="author", size = 50)
+        br
+        input#inputGenre(type="text", placeholder="Genre", name="genre", size=50)
+        br
+        input#inputPubDate(type="text", placeholder="Published Date MM/DD/YYYY", name="pubDate", size = 50)
+        br
+        input#inputImage(type="text", placeholder="Image URL", name="image", size=50)
+        br
+        input#inputShopUrl(type="text", placeholder="Amazon URL", name="shopUrl", size=50)
+        br
+        button#btnSubmit(type="submit") Add Book

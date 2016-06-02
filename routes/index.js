@@ -129,14 +129,13 @@ console.log(image);
 });
 
 /* DELETE User */
-router.post('/removeuser', function(req, res) {
+router.post('/removeuser', function(req, res) { // wanted to make this a DELETE but hit issues* more investigation
     // Set our internal DB variable
     var db = req.db;
 
     // Get our form values
     var userName = req.body.username;
-console.log("delete");
-console.log(userName);
+
     // Set our collection
     var collection = db.get('usercollection');
 
@@ -167,6 +166,47 @@ router.get('/testBooks', function(req, res) {
     });
 });
 
+/* GET New User page. */
+router.get('/newBook', function(req, res) {
+    res.render('newBook', { title: 'Add New Book' });
+});
 
+/* POST to Add User Service */
+router.post('/addbook', function(req, res) {
+    // Set our internal DB variable
+    var db = req.db;
+
+    // Get our form values. These rely on the "name" attributes
+    var id = req.body.id;
+    var title = req.body.title;
+    var author = req.body.author;
+    var genre = req.body.genre;
+    var pubDate = new Date (req.body.pubDate).getTime();
+    var image = req.body.image;
+    var shopUrl = req.body.shopUrl;
+
+    // Set our collection
+    var collection = db.get('bookcollection');
+
+    // Submit to the DB
+    collection.insert({
+        "id" : id,
+        "title" : title,
+        "author" : author,
+        "genre" : genre,
+        "pubDate" : pubDate,
+        "image" : image,
+        "shopUrl" : shopUrl
+    }, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            // And forward to success page
+            res.redirect("http://mylibrary.test.com:8000/MyLibrary/#/books");
+        }
+    });
+});
 
 module.exports = router;
