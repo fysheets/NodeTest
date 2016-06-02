@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    h1= title
+    form#formDeleteUser(name="removeuser",method="post",action="/removeuser")
+        input#inputUserName(type="text", value="#{user.username}", name="username")
+        br
+        button#btnSubmit(type="submit") Remove User
+    br
+    br
+    form#formUpdateUser(name="adduser",method="post",action="/updateuser")
+        input#inputUserName(type="text", placeholder="Username", value="#{user.username}", name="username")
+        br
+        input#inputFirstName(type="text", placeholder="First Name", value="#{user.firstName}", name="firstName")
+        br
+        input#inputLastName(type="text", placeholder="Last Name", value="#{user.lastName}", name="lastName")
+        br
+        input#inputHometown(type="text", placeholder="Hometown", value="#{user.hometown}", name="hometown", size=30)
+        br
+        input#inputFavorite(type="text", placeholder="Favorite Book", value="#{user.favorite}", name="favorite", size = 50)
+        br
+        input#inputImage(type="text", placeholder="Image URL", value="#{user.image}", name="image", size=50)
+        br
+        input#inputBirthday(type="text", placeholder="Birthday (MM/dd/YYYY)", value="#{new Date(user.birthday)}", name="birthday", size = 50)
+        br
+        label Are you in a Book Club? 
+        label #{user.bookClub ? 'Yes' : 'No'}
+        input#inputBookClub(type="radio", value="#{user.bookClub}", name="bookClub" checked)
+        label #{user.bookClub ? 'No' : 'Yes'}
+        input#inputBookClub(type="radio", value="#{! user.bookClub}", name="bookClub")
+        br
+        button#btnSubmit(type="submit") Update User
