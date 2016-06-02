@@ -30,3 +30,6 @@ block content
         input#inputBookClub(type="radio", value="#{! user.bookClub}", name="bookClub")
         br
         button#btnSubmit(type="submit") Update User
+
+    form#formCancel(name="cancel",method="post",action="/cancel")
+        button#btnSubmit(type="submit") Cancel

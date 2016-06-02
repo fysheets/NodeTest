@@ -209,4 +209,9 @@ router.post('/addbook', function(req, res) {
     });
 });
 
+/* POST to Cancel */
+router.post('/cancel', function(req, res) {
+    res.redirect("http://mylibrary.test.com:8000/MyLibrary/#/books");
+});
+
 module.exports = router;
