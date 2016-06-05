@@ -97,9 +97,8 @@ router.post('/updateuser', function(req, res) {
     var favorite = req.body.favorite;
     var image = req.body.image;
     var birthday = new Date(req.body.birthday).getTime();
-    var bookClub = req.body.bookClub;
+    var bookClub = JSON.parse(req.body.bookClub);
     var books = req.body.books;
-console.log(image);
     // Set our collection
     var collection = db.get('usercollection');
 
@@ -210,8 +209,13 @@ router.post('/addbook', function(req, res) {
 });
 
 /* POST to Cancel */
-router.post('/cancel', function(req, res) {
+router.post('/cancelBooks', function(req, res) {
     res.redirect("http://mylibrary.test.com:8000/MyLibrary/#/books");
+});
+
+/* POST to Cancel */
+router.post('/cancelUser', function(req, res) {
+    res.redirect("http://mylibrary.test.com:8000/MyLibrary/#/readers");
 });
 
 module.exports = router;

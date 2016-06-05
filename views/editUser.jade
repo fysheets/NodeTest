@@ -27,9 +27,9 @@ block content
         label #{user.bookClub ? 'Yes' : 'No'}
         input#inputBookClub(type="radio", value="#{user.bookClub}", name="bookClub" checked)
         label #{user.bookClub ? 'No' : 'Yes'}
-        input#inputBookClub(type="radio", value="#{! user.bookClub}", name="bookClub")
+        input#inputBookClub(type="radio", value="#{!user.bookClub}", name="bookClub")
         br
         button#btnSubmit(type="submit") Update User
 
-    form#formCancel(name="cancel",method="post",action="/cancel")
+    form#formCancel(name="cancel",method="post",action="/cancelUser")
         button#btnSubmit(type="submit") Cancel
